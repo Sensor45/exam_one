@@ -1,9 +1,10 @@
+
 import os
 import telebot
 import speech_recognition as sr
 import subprocess
 
-TOKEN = '2144322902:AAGNT2mbleldzYL53vQ3adDtriLLHTxnvnA'
+TOKEN = ''
 
 bot = telebot.TeleBot(TOKEN, parse_mode='HTML')
 
@@ -23,12 +24,12 @@ def voice_processing(message):
 
     text = r.recognize_google(audio,language='ru-RU')
 
-    print(text)
     bot.send_message(message.from_user.id, text)
 
     os.remove(f'{message.chat.id}.wav')
 
-bot.polling(none_stop=True)
+bot.infinity_polling()
+
 
 
 
